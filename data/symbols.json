@@ -1,0 +1,15 @@
+{
+  "indices": [
+    "BANKNIFTY",
+    "FINNIFTY",
+    "NIFTY"
+  ],
+  "equities": [
+    "HDFCBANK",
+    "INFY",
+    "RELIANCE",
+    "SBIN",
+    "TCS"
+  ],
+  "generated_at": "2026-08-24T16:23:57.770776+05:30"
+}
