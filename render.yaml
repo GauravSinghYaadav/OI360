@@ -6,6 +6,8 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:server --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"     # pin the runtime — avoids Render defaulting to an untested newer Python
       - key: MOCK_MODE
         value: "0"          # set to "1" to demo with fake data before Upstox access is verified
       - key: UPSTOX_TOKEN
