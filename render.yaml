@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: oi-dashboard
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:server --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+    envVars:
+      - key: MOCK_MODE
+        value: "0"          # set to "1" to demo with fake data before Upstox access is verified
+      - key: UPSTOX_TOKEN
+        sync: false          # set this in Render dashboard (secret) — your Upstox API access token
+      - key: GITHUB_TOKEN
+        sync: false          # set this in Render dashboard (secret)
+      - key: GITHUB_REPO_URL
+        value: https://github.com/<you>/oi-dashboard.git
+      - key: GIT_USER_NAME
+        value: oi-bot
+      - key: GIT_USER_EMAIL
+        value: oi-bot@example.com
+      - key: RISK_FREE_RATE
+        value: "0.07"
+      - key: EXPIRY_COUNT
+        value: "1"
+      - key: SYMBOL_WHITELIST
+        value: ""            # e.g. "NIFTY,BANKNIFTY,FINNIFTY,RELIANCE,TCS" to limit the universe
